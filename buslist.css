@@ -1,0 +1,205 @@
+* {
+  box-sizing: border-box;
+
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+
+#myInput {
+  /*background-image: url('/css/searchicon.png');*/
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+    text-transform: capitalize;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+    max-height: 400px;
+    overflow: auto;
+}
+
+#myUL li a {
+    text-align: left;
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #b3b0aa;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #333333;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.centereTop {
+  position: absolute;
+  
+  left: 52%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+/* Css part for bottom nav bar*/
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+}
+
+.navbar a {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.floatRight{
+	float:right;
+	
+}
+#floatLeft{
+	float:left;
+}
+
+.navbar a:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+}
+/*deisgn for text box of right side split screen*/
+.busRoutes li {
+    text-transform: capitalize;
+    color: white;
+    list-style-type: none;
+    line-height: 50px;
+}
+  .textBox{
+
+
+	text-align: left;
+	background-color: #333333;
+	width: 70%;
+
+
+	border: 3px;
+	padding: 10px;
+	margin: 20px auto 0 15% ;
+}
+.textBox p{
+	
+}
+/*mini text box deisgn */
+.station{
+    text-transform: capitalize;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: auto;
+    padding: 20px;
+    border: 2px solid lightgray;
+    width: 50%;
+    margin-top: 5%;
+    color: white;
+    margin-bottom: 5px;
+}
+  .miniText{
+	position: absolute;
+	top: 4%;
+	left: 30%;
+	text-align:center;
+	background-color:#825858;
+	color: white;
+	width: 50%;
+	height: 15%;
+	border: 3px;
+	padding: 2px;
+	margin: 2px;
+	border: 3px solid;
+	padding-top: 4px;
+	margin-top: 3%;
+	border-color:lightgrey;
+}
+.miniText p{
+	color:white;
+	text-align:center;
+	
+}
+
+/*bus route style*/
+
+.busRoutes li:before {border: 1px solid gold;content: '';margin-right: 9px;color: white;background-color: white;border-radius: 50%;padding: 1px 10px;z-index: 2;position: relative;}
+
+.busRoutes li:after {content: ' ';padding: 24px 2px;position: relative;color: green;background-color: gold;float: left;left: 12px;top: 18px;z-index: 1;}
+
+.busRoutes li:last-child:after {
+
+    visibility: hidden;
+
+}
+
+
+.busRoutes li:first-child:before {
+    background-color: #23de23;
+}
+
+.busRoutes li:last-child:before {
+    background-color: #fb4141;
+
+}
