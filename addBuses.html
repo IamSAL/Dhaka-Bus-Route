@@ -4,80 +4,88 @@
     <script type="text/javascript" src="query.js"></script>
     <style>
 
-        ul#currentBuses {
-            text-transform: capitalize;
-            list-style-type: decimal;
-            max-height: 400px;
-            overflow: auto;
-        }
         ul#currentBuses:hover .deleteBus{
             visibility: visible;
         }
         .deleteBus:hover {
             background-color: red;
+            color: #fff;
         }
         .deleteBus{
             text-transform: capitalize;
-           visibility: hidden;
+           visibility: visible;
             margin-top: 4px;
-            border: 1px solid #ff00006b;
+            border: 2px solid #ff00006b;
             padding: 0px 5px;
             margin-left: 5px;
             float: right;
-            color: darkred;
-            font-size: 10px;
+            color: rgb(19, 19, 19);
+            font-size: 12px;
             cursor: pointer;
             border-radius: 50%;
             transition: 0.2s;
-        }
+            font-weight: bold;
+
         }
     </style>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="buslist.css">
     <title>AddBus</title>
 </head>
-<body style="background-color: #efefef;">
+<body style="background-color: #ddd;">
 
-<div class="container">
+<div id="wrapper">
+    <section id="main-body">
+        <div class="container">
 
-    <div class="row">
-    <div class="bus-input" style="width: 60%; margin: 10%;margin-left:0;float:left" >
-        <h5>Add new Bus</h5>
-    <form class="u-max-full-width u-full-width " id="addBusForm">
-        <input class="u-full-width" type="text" placeholder="Bus Name" required id="addBusName">
-        <input class="u-full-width" type="text" placeholder="RouteNo" id="addBusRoute" >
-        <select class="u-full-width"   id="addBusType">
-            <option disabled selected value="sitting">----Bus Type----</option>
-            <option value="sitting">sitting</option>
-            <option value="local">local</option>
-        </select>
+            <div class="row">
 
+                <div class="leftbar col-lg-6 col-md-12">
+                    <div class="bus-input">
+                        <h5>Add new Bus</h5>
+                    <form class="u-max-full-width u-full-width " id="addBusForm">
+                        <input class="u-full-width" type="text" placeholder="Bus Name" required id="addBusName">
+                        <input class="u-full-width" type="text" placeholder="Route No" id="addBusRoute" >
+                        <select class="u-full-width"   id="addBusType">
+                            <option disabled selected value="sitting">----Bus Type----</option>
+                            <option value="sitting">sitting</option>
+                            <option value="local">local</option>
+                        </select>
+                
+                
+                        <label for="addBusStationList">Stations [Start to Finish, Separated by comma]:</label>
+                        <textarea id="addBusStationList" class="u-full-width" placeholder="dhanmondi,shyamoli,bangla college,mirpur 10,uttara etc " required ></textarea>
+                        <input type="submit" class="button-primary u-full-width">
+                
+                    </form>
+                
+                
+                    </div>
+                </div>
 
-        <label for="addBusStationList">Stations [Start to Finish, Separated by comma]:</label>
-        <textarea id="addBusStationList" class="u-full-width" placeholder="dhanmondi,shyamoli,bangla college,mirpur 10,uttara etc " required ></textarea>
-        <input type="submit" class="button-primary u-full-width">
+                <div class="rightbar c col-lg-6 col-md-12">
+                    <div class="current-buses">
+                        <h5>Current Buses:</h5>
+                      <ul id="currentBuses">
+                
+                      </ul>
+                        <button class="button restore" onclick="saveBusData()">Restore All Default Buses</button>
+                        <button class="button json" onclick="getBusJSON()">Get JSON ( developer only)</button>
+                
+                    </div>
+                </div>
 
-    </form>
-
-
-    </div>
-    <div class="current-buses"style="width: 20%; margin-top:10%;float:right">
-        <h5>Current Buses:</h5>
-      <ul id="currentBuses">
-
-      </ul>
-        <button class="button" onclick="saveBusData()">Restore All Default Buses</button>
-        <button class="button" onclick="getBusJSON()">Get JSON ( developer only)</button>
-
-    </div>
-    </div>
-    <div class="navbar">
-        <a href="busList.html" id="floatLeft" class="active" >All bus</a>
-        <a href="home.html" class="floatRight" >Home</a>
-    </div>
+            </div>
+            <div class="navbar">
+                <a href="busList.html" id="floatLeft" class="active" >All bus</a>
+                <a href="home.html" class="floatRight" >Home</a>
+            </div>
+        </div>
+        
+    </section>
 </div>
-
 <script src="main.js"></script>
 <script>
     addbus=document.getElementById('addBusForm');
@@ -121,7 +129,13 @@
             }
 
         }
-    })
+    });
 </script>
+
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>

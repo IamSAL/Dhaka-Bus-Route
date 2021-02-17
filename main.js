@@ -7,23 +7,10 @@ class Bus{
         this.stationArray=[...new Set(stationArray)];
         this.smallCaps();
     }
-
-    // addLocation(newLocation){
-    //     this.stationArray=this.stationArray+newLocation;
-    // }
-    // setRouteNo(newRouteNo){
-    //     this.RouteNo=newRouteNo;
-    // }
-    // setFirstStation(newFirstStation){
-    //     this.firstStation=newFirstStation;
-    // }
-    // setLastStation(newLastStation){
-    //     this.firstStation=newLastStation;
-    // }
     smallCaps(){
         this.stationArray=this.stationArray.map(function (station) {
             return station.toLowerCase();
-        })
+        });
     }
 }
 
@@ -32,6 +19,7 @@ class UI {
 
     constructor() {
     }
+
     saveBusesToLS(bus){
         let currentBuses=[];
         if (localStorage.getItem('buslist')!=null){
@@ -49,18 +37,18 @@ class UI {
             if (bus.id==id){
                 currentBuses.splice(index,1);
             }
-        })
+        });
         localStorage.setItem('buslist',JSON.stringify(currentBuses));
     }
     getBusesFromLS(){
         if (localStorage.getItem('buslist')!=null){
-            return JSON.parse(localStorage.getItem('buslist'))
+            return JSON.parse(localStorage.getItem('buslist'));
         }
     }
 
 }
 
-if (localStorage.getItem('buslist')==null){
+if (localStorage.getItem('buslist') == null){
     saveBusData();
 }
 
@@ -75,10 +63,11 @@ const outputTableContainer=document.getElementById('searchResult');
 const outputTable=document.getElementById('outputTable');
 
 var tempLocations=[];
+
 if(busList.length>0){
 for (let i=0;i<busList.length;i++){
-    for (j=0;j<busList[i].stationArray.length;j++){
-        tempLocations.push(busList[i].stationArray[j])
+    for (let j=0;j<busList[i].stationArray.length; j++){
+        tempLocations.push(busList[i].stationArray[j]);
     }
 }
 }
@@ -90,7 +79,6 @@ function showSearchResult(buses) {
   outputTable.innerHTML='';
     buses.forEach(function (bus) {
         let tr=document.createElement('tr');
-
         let busName=document.createElement('td');
         let firstStation=document.createElement('td');
         let lastStation=document.createElement('td');
@@ -101,8 +89,9 @@ function showSearchResult(buses) {
         firstStation.appendChild(document.createTextNode(bus.stationArray[0]));
         lastStation.appendChild(document.createTextNode(bus.stationArray[bus.stationArray.length-1]));
         busType.appendChild(document.createTextNode(bus.busType));
-        let actionBtn=`<button class="seeRoute button open-modal">Route</button>`;
-        actionId=`<span style='opacity:0;font-size: 0px;'>${bus.id}</span>`;
+        let actionBtn=`<button class="seeRoute button open-modal" data-toggle="modal" data-target="#exampleModalLong">Route</button>`;
+
+        let actionId=`<span style='opacity:0;font-size: 0px;'>${bus.id}</span>`;
         action.innerHTML=`${actionBtn}${actionId}`;
 
         tr.appendChild(busName);
@@ -112,13 +101,12 @@ function showSearchResult(buses) {
         tr.appendChild(action);
 
         outputTable.appendChild(tr);
-    })
+    });
 }
 function searchBus() {
     let source=document.getElementById('myInput').value.toString().toLowerCase();
     let destination=document.getElementById('myInput2').value.toString().toLowerCase();
     sourceTODestination.innerText = `${source} - ${destination}`;
-    // console.log(`${source} - ${destination}`)
     let matchedBuses=[];
     matchedBuses=busList.filter(function (bus) {
         return bus.stationArray.includes(source) && bus.stationArray.includes(destination);
@@ -130,8 +118,8 @@ function searchBus() {
 function showRoute(busId) {
     let list=document.querySelector('.busRoutes');
     list.innerHTML='';
-     currentBus=busList.filter(function (bus) {
-       return bus.id==busId
+    let currentBus=busList.filter(function (bus) {
+       return bus.id==busId;
    });
 
     currentBus[0].stationArray.forEach(function (station) {
@@ -143,7 +131,7 @@ function showRoute(busId) {
     document.getElementById('from').innerHTML=currentBus[0].stationArray[0];
     document.getElementById('to').innerHTML=currentBus[0].stationArray[currentBus[0].stationArray.length-1];
     if(currentBus[0].routeNo==undefined){
-        document.getElementById('RouteNO').innerHTML=`RouteNo: N/A`
+        document.getElementById('RouteNO').innerHTML=`RouteNo: N/A`;
     }else{
         document.getElementById('RouteNO').innerHTML=`RouteNo: ${currentBus[0].routeNo}`;
     }

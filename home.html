@@ -4,6 +4,7 @@
 <title> Dhaka bus Route </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="design.css">
 
 <script type="text/javascript" src="query.js"></script>
@@ -11,98 +12,85 @@
 </script>
 </head>
 <body>
-<div class="modal">
-	<div class="modal-inner">
-		<div class="modal-content">
-<!--			<div class="modal-close-icon">-->
-<!--				<a href="javascript:void(0)" class="close-modal"><i class="fa fa-times" aria-hidden="true"></i></a>-->
-<!--			</div>-->
-			<div class="modal-content-inner">
-
-				<ul class="busRoutes">
-					<li>Start</li>
-					<li>Station</li>
-					<li>Station</li>
-					<li>End</li>
-				</ul>
-				<div class="routeHome">
-
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog  modal-dialog-scrollable" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title text-dark" id="exampleModalLongTitle">Route</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		 
+			<ul class="busRoutes">
+				<!-- will be add dynamically -->
+				<!-- <li>Start</li>
+				<li>Station</li>
+				<li>Station</li>
+				<li>End</li> -->
+			</ul>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <!-- wrapper -->
+<div class="wrapper">
+	<section id="main-body">
+		<div class="container">
+			<div class="row">
+				<div class="split left col-md-6 ">
+					<div class="inner">
+						<span class="menu text-dark mb-2">&#9776; Menu</span>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d29212.895494355333!2d90.35914680117119!3d23.761213991306782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3755c0f596a1ef75%3A0x1c386acb29c34356!2sGabtoli%2C%20Bangladesh!3m2!1d23.783725699999998!2d90.34424489999999!4m5!1s0x3755b888ad339cb5%3A0x20c70986185ad2ba!2sMogbazar%2C%20Dhaka%2C%20Bangladesh!3m2!1d23.749357099999997!2d90.4089838!5e0!3m2!1sen!2sca!4v1586150284216!5m2!1sen!2sca" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="mt-2"></iframe>
+					<div class="centered">
+						<form id="searchBusForm" class="mt-2">
+						  <input class="inputOne" class="w-100" type="text" id="myInput"  placeholder="Departure From" size="50" required list="locations">
+						  <input class="inputTwo" class="w-100" type="text" id="myInput2"  placeholder="Final Destination" size="50" required list="locations">
+						  <datalist id="locations" class="w-100"></datalist>
+						<input id="searchBtn" type="submit" value="Search" class="w-100" style="color: white">
+						</form>
+					</div>
+				  
+					</div>
+				</div>
+				<!-- Right side html-->
+				<div class="split right col-md-6 ">
+				  <div class="centereTop">
+					<h2 id="sourceTODestination" class="text-center">Departure - Destination</h2>
+				  </div>
+						
+				<div class="textBox" id="searchResult">
+					<table >
+						<thead >
+						<tr><td>Bus Name</td>
+							<td>First Station</td>
+							<td>Last Station</td>
+							<td>Bust Type</td>
+							<td>Action</td></tr>
+						</thead>
+						<tbody id="outputTable"></tbody>
+				
+					</table>
+				</div>
 				</div>
 			</div>
-			<hr class="modal-buttons-seperator">
-			<div class="modal-buttons">
-				<button class="button close-modal">Close</button>
-			</div>
 		</div>
-	</div>
-</div>
-
-<!--	<main class="container demo-container">-->
-<!--		<br>-->
-<!--		<button class="">Launch modal window</button>-->
-<!--	</main>-->
-<div class="split left">
-<!--	<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d29212.895494355333!2d90.35914680117119!3d23.761213991306782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3755c0f596a1ef75%3A0x1c386acb29c34356!2sGabtoli%2C%20Bangladesh!3m2!1d23.783725699999998!2d90.34424489999999!4m5!1s0x3755b888ad339cb5%3A0x20c70986185ad2ba!2sMogbazar%2C%20Dhaka%2C%20Bangladesh!3m2!1d23.749357099999997!2d90.4089838!5e0!3m2!1sen!2sca!4v1586150284216!5m2!1sen!2sca" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
-  <div class="centered">
-
-	  <span style="font-size:20px;cursor:pointer;display: block;margin: 10px" onclick="openNav()">&#9776; Menu</span>
-	  <form id="searchBusForm">
-    <input class="inputOne" type="text" id="myInput"  placeholder="Enter Source" size="50" required list="locations">
-
-	<input class="inputTwo" type="text" id="myInput2"  placeholder="Enter Destination" size="50" required list="locations">
-
-		  <datalist id="locations">
-
-		  </datalist>
-		<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">About</a>
-		<a href="#">Services</a>
-		<a href="#">Clients</a>
-		<a href="#">Contact</a>
+	</section>
+	<section id="Navbar">
+		<div class="container">
+			<div class="navbar">
+				<a href="#home" id="floatLeft" class="active" >Home</a>
+				<a href="busList.html" class="floatRight" >All Bus</a>
+					<a href="addBuses.html" class="floatRight" >Add Bus</a>
+			  </div>
 		</div>
-
-	  <input id="searchBtn" type="submit" value="Search" style="color: white">
-	  </form>
-  </div>
-
+	</section>
 </div>
-<!-- Right side html-->
-
-<div class="split right ">
-
-
-
-  <div class="centereTop">
-    <h2 id="sourceTODestination">Source - Destination</h2>
-  </div>
-		
-<div class="textBox" id="searchResult">
-	<table >
-		<thead >
-		<tr><td>Bus Name</td>
-			<td>First Station</td>
-			<td>Last Station</td>
-			<td>Bust Type</td>
-			<td>Action</td></tr>
-		</thead>
-		<tbody id="outputTable">
-
-
-		</tbody>
-
-	</table>
-</div>
-  <div class="navbar">
-  <a href="#home" id="floatLeft" class="active" >Home</a>
-  <a href="busList.html" class="floatRight" >All Bus</a>
-	  <a href="addBuses.html" class="floatRight" >Add Bus</a>
-</div>
-
-<div class="main">
-</div>
-</div>
-
 
 <script>
 function openNav() {
@@ -119,14 +107,16 @@ function closeNav() {
 <script>
 	var options='';
 	if(busList.length>0){
+
 		for (let i=0;i<AllLocations.length;i++){
 			options +=`<option>${AllLocations[i]}</option>`;
 			document.getElementById('locations').innerHTML=options;
 		}
 	}
 
-	if(busList.length>0){showSearchResult(busList);
-		modalFunc();
+	if(busList.length>0){
+		showSearchResult(busList);
+		// modalFunc();
 	}
 
 	const searchBusForm=document.getElementById('searchBusForm');
@@ -148,7 +138,7 @@ function closeNav() {
 			showSearchResult(busList);
 			modalFunc()
 			sourceTODestination.innerText=`Source - Destination`;
-				// modalFunc();
+				modalFunc();
 			},7000)
 		}
 		searchBusForm.reset();
@@ -167,6 +157,7 @@ function closeNav() {
 	function showRouteHome(busId) {
 		let list=document.querySelector('.busRoutes');
 		list.innerHTML='';
+		
 		currentBus=busList.filter(function (bus) {
 			return bus.id==busId
 		});
@@ -220,13 +211,10 @@ function modalFunc() {
 	});
 
 }
-
-
-
-
-
-
 </script>
-
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
